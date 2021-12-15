@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include "strfunc.h"
 
 namespace ff {
     template <class T>
@@ -326,6 +327,11 @@ T ff::Complex<T>::angle() const {
     return atan( this->imag / this->real);
 }
 
+template <class T> 
+std::string ff::Complex<T>::strVal () const;
+ff::Complex<T> ff::Complex<T>::str2complex(const std::string &txt)const {
+    
+}
 
 typedef ff::Complex<double> doubleComplex;
 typedef ff::Complex<int> intComplex;
