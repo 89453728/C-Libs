@@ -71,8 +71,8 @@ namespace ff {
             T Imag () const;
 
             void c_print() const;
-            //std::string strVal () const;
-            //Complex str2complex(std::string txt) const;
+            std::string strVal () const;
+            Complex str2complex(const std::string &txt) const;
             
     };
 }
@@ -328,9 +328,16 @@ T ff::Complex<T>::angle() const {
 }
 
 template <class T> 
-std::string ff::Complex<T>::strVal () const;
+std::string ff::Complex<T>::strVal () const {
+    std::string buff = "";
+    buff += std::to_string(this->real) + (this->imag < 0? " " : " + ") + std::string(this->imag) + "i";
+    return buff;
+}
+template <class T>
 ff::Complex<T> ff::Complex<T>::str2complex(const std::string &txt)const {
-    
+    T *temp = ff::splitComplex<T>(txt);
+    ff::Complex<T> ret(temp[0],temp[1]);
+    return temp;
 }
 
 typedef ff::Complex<double> doubleComplex;

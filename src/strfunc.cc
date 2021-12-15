@@ -7,7 +7,7 @@ std::string ff::quiti(const std::string &text) {
             buff += text[c];
         }
     }
-    return buff; 
+    return buff;
 }
 
 std::string ff::trim(const std::string &text) {
@@ -19,3 +19,4 @@ std::string ff::trim(const std::string &text) {
     }
     return buff;
 }
+
