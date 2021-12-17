@@ -17,21 +17,27 @@ namespace ff {
             Complex(const Complex &o);
             Complex(void);
             Complex(const T); 
-
+            
+            //Complex operator +(const T a,const Complex &o) const;
             Complex operator +(const Complex &o) const;
             Complex operator +(const T a) const;
 
+            //Complex operator *(const T a,const Complex &o) const;
             Complex operator *(const Complex &o) const;
             Complex operator *(const T a) const;
 
+            //Complex operator -(const T a,const Complex &o) const;
             Complex operator -(const Complex &o) const;
             Complex operator -(const T a) const;
 
+            //Complex operator /(const T a,const Complex &o) const;
             Complex operator /(const Complex &o) const;
             Complex operator /(const T a) const;
-
+            
             Complex operator =(const Complex &o); 
             Complex operator =(const T a);
+
+            //std::string << (const Complex &p,const Complex &o) const;
 
             ff::Complex<T> operator +=(const Complex &o);
             ff::Complex<T> operator +=(const T a);
@@ -99,6 +105,13 @@ ff::Complex<T>::Complex(const T t) {
 
 /* Operators */
 
+/*
+template <class T>
+ff::Complex<T> ff::Complex<T>::operator +(const T a, ff::Complex<T> &o) const{
+    ff::Complex<T> ret(o.Real() + a, o.Imag());
+    return ret;
+}*/
+
 template <class T>
 ff::Complex<T> ff::Complex<T>::operator + (const ff::Complex<T> &o) const{
     ff::Complex<T> ret(this->real + o.Real(),this->imag + o.Imag());
@@ -110,6 +123,12 @@ ff::Complex<T> ff::Complex<T>::operator + (const T a) const{
     ff::Complex<T> ret(this->real + a,this->imag);
     return ret;
 }
+/*
+template <class T> 
+ff::Complex<T> ff::Complex<T>::operator *(const T a, const ff::Complex<T> &o) const{
+    ff::Complex<T> ret(a*o.Real(),a*o.Imag());
+    return ret;
+}*/
 
 template <class T>
 ff::Complex<T> ff::Complex<T>::operator *(const ff::Complex<T> &o) const{
@@ -122,6 +141,12 @@ ff::Complex<T> ff::Complex<T>::operator *(const T a) const{
     ff::Complex<T> ret((this->real)*a, (this->imag)*a);
     return ret;
 }
+/*
+template <class T>
+ff::Complex<T> ff::Complex<T>::operator -(const T a, const ff::Complex<T> &o) const {
+    ff::Complex<T> ret(a - o.Real(),o.Imag());
+    return ret;
+}*/
 
 template <class T>
 ff::Complex<T> ff::Complex<T>::operator -(const ff::Complex<T> &o) const{
@@ -134,6 +159,12 @@ ff::Complex<T> ff::Complex<T>::operator -(const T a) const{
     ff::Complex<T> ret(this->real - a,this->imag);
     return ret;
 }
+/*
+template <class T>
+ff::Complex<T> ff::Complex<T>::operator /(const T a, const ff::Complex<T> &o) const {
+    ff::Complex<T> ret(a*o.Real()/o.abs(), -a*o.Imag()/o.abs());
+    return ret;
+}*/
 
 template <class T>
 ff::Complex<T> ff::Complex<T>::operator /(const ff::Complex<T> &o) const{
@@ -161,6 +192,11 @@ ff::Complex<T> ff::Complex<T>::operator =(const T a){
     this->real = a;
     return *this;
 }
+/*
+template <class T>
+std::string ff::Complex<T>::operator <<(const ff::Complex<T> &p, const ff::Complex<T> &o) const{
+    return p.strVal() + o.strVal();
+}*/
 
 template<class T>
 ff::Complex<T> ff::Complex<T>::operator +=(const ff::Complex<T> &o){
@@ -317,7 +353,7 @@ void ff::Complex<T>::c_print() const {
         sign = " + ";
     }
     else {
-        "  ";
+        sign = "  ";
     }
     std::cout << this->Real() << sign << this->Imag() << "i\n"; 
 }
@@ -353,7 +389,5 @@ typedef ff::Complex<uint64_t> uint64Complex;
 
 const doubleComplex i(0,1);
 const doubleComplex j(0,1);
-
-
 
 #endif 
