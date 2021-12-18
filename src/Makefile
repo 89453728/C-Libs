@@ -3,7 +3,7 @@ CFLAGS = -Wall -g
 MAIN = ../test/main
 OFILES = narray.o strfunc.o cmp.o
 EXEC = ../test/exec
-INCLUDES = -I./../src
+INCLUDES = -I./../src/
 
 all: done
 
@@ -14,9 +14,9 @@ move: $(OFILES)
 	@echo "Moving all .o to test"
 	@cp $? ../test/
 
-%.o: %.cc
+%.o: %.cc %.h
 	@echo "Making .o files"
-	@$(GG) $(CFLAGS) -c $<
+	$(GG) $(CFLAGS) -c $<
 
 compile:
 	@echo "Linking .o files and  making executable"
