@@ -1,7 +1,7 @@
 GG = g++
 CFLAGS = -Wall -g
 MAIN = ../test/main
-OFILES = strfunc.o cmp.o
+OFILES = narray.o strfunc.o cmp.o
 EXEC = ../test/exec
 INCLUDES = -I./../src
 
