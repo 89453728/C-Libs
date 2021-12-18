@@ -25,3 +25,4 @@ compile:
 clean:
 	@rm -r *.o
 	@rm -r ../test/*.o
+	@rm ../test/exec
