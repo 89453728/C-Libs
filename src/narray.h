@@ -17,6 +17,7 @@ namespace ff {
 		public: 
 			NArray();
 			NArray(const narray_len s);
+            NArray(const NArray &a);
 			NArray(const T *e,const narray_len tam);
 			
 			NArray operator +(const NArray &a) const;
@@ -59,8 +60,20 @@ ff::NArray<T>::NArray(const narray_len s){
 	this->size = s;
 }
 template<class T>
+ff::NArray<T>::NArray(const ff::NArray<T> &aa){
+    this->a = new T[aa.len()];
+    this->size = aa.len();
+    for(narray_len i=0;i<aa.len();i++){
+        this->a[i] = aa[i];
+    }
+}
+template<class T>
 ff::NArray<T>::NArray(const T *e,const narray_len tam){
-	this->m = new T[tam];
+	this->a = new T[tam];
+    this->size = tam;
+    for(narray_len i=0;i<tam;i++) {
+        this->a[i] = e[i];
+    }
 }
 
 template<class T>
